@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agrinho: Festejando Campo e Cidade</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f0f7e9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background-color: #4b8b3b;
+            color: #fff;
+            padding: 20px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #ffeb3b;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/api/placeholder/1200/600') center/cover no-repeat;
+            height: 500px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+        }
+
+        .hero-content h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #ffeb3b;
+            color: #333;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #fdd835;
+        }
+
+        section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            font-size: 36px;
+            color: #4b8b3b;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 3px;
+            background-color: #ffeb3b;
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .traditions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .tradition-card {
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .tradition-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .tradition-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .tradition-details {
+            padding: 20px;
+        }
+
+        .tradition-details h3 {
+            color: #4b8b3b;
+            margin-bottom: 10px;
+        }
+
+        .gallery {
+            background-color: #e4f0dd;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .activities-content {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .activity {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .activity-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .activity-text {
+            flex: 2;
+        }
+
+        .activity-text h3 {
+            color: #4b8b3b;
+            margin-bottom: 10px;
+        }
+
+        /* Alternating layout for activities */
+        .activity:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        footer {
+            background-color: #4b8b3b;
+            color: #fff;
+            padding: 50px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 20px;
+            font-size: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background-color: #ffeb3b;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-column a:hover {
+            color: #ffeb3b;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: #fff;
+            border-radius: 50%;
+            color: #4b8b3b;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: #ffeb3b;
+            color: #333;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Formulário de contato */
+        .contact-form {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav ul {
+                margin-top: 15px;
+                justify-content: center;
+            }
+
+            .hero-content h1 {
+                font-size: 36px;
+            }
+
+            .about-content {
+                flex-direction: column;
+            }
+
+            .activity {
+                flex-direction: column !important;
+            }
+
+            .activity-image,
+            .activity-text {
+                flex: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">Agrinho</div>
+            <nav>
+                <ul>
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#tradicoes">Tradições</a></li>
+                    <li><a href="#galeria">Galeria</a></li>
+                    <li><a href="#atividades">Atividades</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Seção Hero -->
+    <section class="hero" id="inicio">
+        <div class="container hero-content">
+            <h1>Agrinho: Festejando Campo e Cidade</h1>
+            <p>Valorizando nossas raízes rurais e celebrando a conexão entre o campo e a cidade através das festas populares e tradições culturais.</p>
+            <a href="#sobre" class="btn">Saiba Mais</a>
+        </div>
+    </section>
+
+    <!-- Seção Sobre -->
+    <section id="sobre">
+        <div class="container">
+            <div class="section-title">
+                <h2>Sobre o Projeto</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>O projeto "Agrinho: Festejando Campo e Cidade" tem como objetivo resgatar e valorizar as tradições culturais que conectam o ambiente rural e urbano, mostrando como essas duas realidades se complementam e são essenciais para o desenvolvimento sustentável de nossa sociedade.</p>
+                    <p>Através de atividades educativas, celebrações e intercâmbios culturais, buscamos fortalecer os laços entre a população do campo e da cidade, promovendo o respeito mútuo e a compreensão das diferentes formas de vida e trabalho.</p>
+                    <p>O Agrinho é um programa educativo que visa conscientizar crianças e jovens sobre a importância do campo para a vida nas cidades, além de destacar temas como sustentabilidade, agricultura familiar, alimentação saudável e preservação das tradições culturais.</p>
+                </div>
+                <div class="about-image">
+                    <img src="/api/placeholder/600/400" alt="Crianças participando do projeto Agrinho" width="100%">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Tradições -->
+    <section id="tradicoes">
+        <div class="container">
+            <div class="section-title">
+                <h2>Tradições que Unem</h2>
+            </div>
+            <div class="traditions-grid">
+                <div class="tradition-card">
+                    <div class="tradition-image">
+                        <img src="festa-junina-prezunic.jpg" alt="Festa Junina" width="100%">
+                    </div>
+                    <div class="tradition-details">
+                        <h3>Festas Juninas</h3>
+                        <p>As festas juninas são uma das mais importantes celebrações que unem campo e cidade. Com suas danças de quadrilha, comidas típicas e decorações coloridas, estas festas celebram a colheita e homenageiam santos populares como Santo Antônio, São João e São Pedro.</p>
+                    </div>
+                </div>
+                <div class="tradition-card">
+                    <div class="tradition-image">
+                        <img src="colheita.jpeg" alt="Festa da Colheita" width="100%">
+                    </div>
+                    <div class="tradition-details">
+                        <h3>Festa da Colheita</h3>
+                        <p>Esta celebração acontece após o período de colheita de importantes produtos agrícolas locais. É um momento de agradecimento pela abundância da terra e de compartilhamento dos frutos do trabalho rural com toda a comunidade, incluindo visitantes da cidade.</p>
+                    </div>
+                </div>
+                <div class="tradition-card">
+                    <div class="tradition-image">
+                        <img src="feira.jpeg" alt="Feiras de Produtores" width="100%">
+                    </div>
+                    <div class="tradition-details">
+                        <h3>Feiras de Produtores</h3>
+                        <p>Mais que um espaço comercial, as feiras de produtores são verdadeiros pontos de encontro cultural onde o campo vai à cidade. Ali são compartilhados saberes, receitas, músicas e histórias, criando laços entre produtores rurais e consumidores urbanos.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Galeria -->
+    <section id="galeria" class="gallery">
+        <div class="container">
+            <div class="section-title">
+                <h2>Galeria de Momentos</h2>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="festa junina.jpg" alt="Crianças dançando quadrilha" width="100%">
+                </div>
+                <div class="gallery-item">
+                    <img src="artesanenta.jpeg" alt="Oficina de artesanato rural" width="100%">
+                </div>
+                <div class="gallery-item">
+                    <img src="alimentos.jpg" alt="Produção de alimentos típicos" width="100%">
+                </div>
+                <div class="gallery-item">
+                    <img src="o-que-plantar-na-horta-750x422.jpg" alt="Plantio de horta comunitária" width="100%">
+                </div>
+               
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Atividades -->
+    <section id="atividades">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nossas Atividades</h2>
+            </div>
+            <div class="activities-content">
+                <div class="activity">
+                    <div class="activity-image">
+                        <img src="/api/placeholder/400/320" alt="Intercâmbio entre escolas" width="100%">
+                    </div>
+                    <div class="activity-text">
+                        <h3>Intercâmbio entre Escolas</h3>
+                        <p>Promovemos visitas de estudantes de escolas urbanas a escolas rurais e vice-versa, permitindo que crianças e jovens conheçam diferentes realidades e troquem experiências culturais e conhecimentos.</p>
+                        <p>Durante estas visitas, são realizadas atividades como contação de histórias sobre a vida no campo e na cidade, oficinas de culinária com ingredientes típicos, e jogos tradicionais de ambos os ambientes.</p>
+                    </div>
+                </div>
+                <div class="activity">
+                    <div class="activity-image">
+                        <img src="/api/placeholder/400/320" alt="Oficinas de Saberes" width="100%">
+                    </div>
+                    <div class="activity-text">
+                        <h3>Oficinas de Saberes</h3>
+                        <p>Agricultores, artesãos e conhecedores das tradições rurais compartilham seus conhecimentos com a comunidade urbana através de oficinas práticas e demonstrações.</p>
+                        <p>Entre as oficinas mais populares estão: produção de queijos artesanais, técnicas de plantio orgânico, artesanato com palha de milho, confecção de instrumentos musicais com materiais naturais e preparo de remédios com plantas medicinais.</p>
+                    </div>
+                </div>
+                <div class="activity">
+                    <div class="activity-image">
+                        <img src="/api/placeholder/400/320" alt="Festival Cultural" width="100%">
+                    </div>
+                    <div class="activity-text">
+                        <h3>Festival Anual Campo-Cidade</h3>
+                        <p>O ponto alto de nosso calendário é o Festival Anual que reúne apresentações culturais, exposições de produtos agrícolas, competições esportivas tradicionais e mostras de projetos desenvolvidos pelas escolas participantes do programa Agrinho.</p>
+                        <p>O festival acontece em um espaço central da cidade e atrai participantes tanto da zona rural quanto urbana, consolidando-se como um importante momento de integração comunitária e celebração de nossa identidade cultural.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Contato -->
+    <section id="contato">
+        <div class="container">
+            <div class="section-title">
+                <h2>Entre em Contato</h2>
+            </div>
+            <div class="contact-form">
+                <form action="#" method="post">
+                    <div class="form-group">
+                        <label for="name">Nome</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Assunto</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Mensagem</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Enviar Mensagem</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Agrinho</h3>
+                    <p>Programa educativo que valoriza as tradições culturais e promove a integração entre campo e cidade, contribuindo para um futuro sustentável e harmônico.</p>
+                    <div class="social-links">
+                        <a href="#"><span>FB</span></a>
+                        <a href="#"><span>IG</span></a>
+                        <a href="#"><span>YT</span></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Links Rápidos</h3>
+                    <ul>
+                        <li><a href="#inicio">Início</a></li>
+                        <li><a href="#sobre">Sobre o Projeto</a></li>
+                        <li><a href="#tradicoes">Tradições</a></li>
+                        <li><a href="#galeria">Galeria</a></li>
+                        <li><a href="#atividades">Atividades</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contato</h3>
+                    <ul>
+                        <li>Telefone: (00) 1234-5678</li>
+                        <li>Email: contato@agrinho.org.br</li>
+                        <li>Endereço: Rua das Flores, 123 - Centro</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Programa Agrinho - Todos os direitos reservados</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Script simples para rolagem suave ao clicar nos links de navegação
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
